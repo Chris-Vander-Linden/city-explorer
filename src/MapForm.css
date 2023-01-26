@@ -1,0 +1,46 @@
+#formContainer {
+  min-height: calc(15vh - 5px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#formContainer form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#formContainer > *,
+#formContainer form > * {
+  margin: 0 !important;
+  flex: 1 1 auto;
+}
+
+.form-label {
+  display: none;
+}
+
+button.btn-primary,
+button.btn-primary:not(.btn-check) + .btn:active,
+button.btn-primary:visited,
+.btn-check:checked + .btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check) + .btn:active,
+:not(.btn-check) + .btn:active {
+  background-color: var(--action) !important;
+  border-color: black;
+}
+
+button.btn-primary:hover {
+  cursor: pointer;
+  background-color: rgb(228, 151, 10) !important;
+}
+
+#resultsContainer {
+  background-color: rgb(240, 240, 240);
+  border-radius: 5px;
+  font-style: italic;
+}
