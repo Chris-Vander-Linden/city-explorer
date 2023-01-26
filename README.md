@@ -24,9 +24,9 @@ This is an application for searching addresses and displaying maps.
 
     Estimate of time needed to complete: 1 hour
 
-    Start time: 1/24/22 6 PM
+    Start time: 1/24/23 6 PM
 
-    Finish time: 1/24/22 7:30 PM
+    Finish time: 1/24/23 7:30 PM
 
     Actual time needed to complete: 1.5 hours
 
@@ -36,9 +36,9 @@ This is an application for searching addresses and displaying maps.
 
     Estimate of time needed to complete: 1 hour
 
-    Start time: 1/24/22 7:30 PM
+    Start time: 1/24/23 7:30 PM
 
-    Finish time: 1/24/22 8:30 PM
+    Finish time: 1/24/23 8:30 PM
 
     Actual time needed to complete: 1 hour
 
@@ -49,19 +49,21 @@ This is an application for searching addresses and displaying maps.
 
     Estimate of time needed to complete: 1 hour
 
-    Start time: 1/24/22 10:30 PM
+    Start time: 1/24/23 10:30 PM
 
-    Finish time: _____
+    Finish time: 1/25/23 9:30 PM
 
-    Actual time needed to complete: _____
+    Actual time needed to complete: 5 hours
+
+    Notes: I had the original static map done in about an hour but wanted to add an interactive map because I know this will set me up better for other features.  I also learned more about the React lifecycle methods since I had to wait for components to mount to the DOM before attaching the map.
 
 
 
     Name of feature: Errors: As a user, I want clear messages if something goes wrong so I know if I need to make any changes or try again in a different manner.
 
-    Estimate of time needed to complete: 1 hour
+    Estimate of time needed to complete: 2 hour
 
-    Start time: _____
+    Start time: 1/26/23 1:00 PM
 
     Finish time: _____
 
