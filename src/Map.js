@@ -6,7 +6,7 @@ class Map extends React.Component {
 
   updateMap = (lon, lat) => {
 
-    let zoom = lon !== 0 ? 8 : 1;
+    let zoom = lon !== 0 ? 10 : 1;
 
     const map = new mapboxgl.Map({
       container: 'map',
