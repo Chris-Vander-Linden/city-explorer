@@ -1,0 +1,8 @@
+#mapContainer {
+  position: relative;
+}
+
+#map {
+  width: 100%;
+  min-height: calc(73vh - 45px);
+}

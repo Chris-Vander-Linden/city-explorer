@@ -1,3 +1,15 @@
+/* color scheme */
+/* CSS HEX */
+:root {
+--rich-black-fogra-39: rgb(0, 5, 5);
+--english-violet: rgb(59, 51, 85);
+--purple-navy: rgb(93, 93, 129);
+--periwinkle-crayola: rgb(191, 205, 224);
+--white: rgb(254, 252, 253);
+--action: rgb(236, 154, 41);
+}
+
+
 /* resets */
 * {
   box-sizing: border-box;
@@ -5,24 +17,34 @@
   padding: 0;
 }
 
-html {
-  background-color: black;
-  color: greenyellow;
+html > body {
+  background-color: var(--english-violet);
+  color: var(--rich-black-fogra-39)
+}
+
+body {
+  padding: 5px;
 }
 
 #container {
-  border: 5px double greenyellow;
-  border-radius: 10px;
-  max-width: 800px;
-  margin: 10px auto;
-  padding: 10px;
-  min-height: calc(100vh - 20px);
+  max-width: 1000px;
+  margin: 0px auto;
+  padding: 5px;
+  background-color: var(--purple-navy);
+  border-radius: 2px;
+  min-height: calc(100vh - 10px);
 }
 
-button:hover {
-  cursor: pointer;
+#container > * {
+  padding: 5px;
+  border: 1px solid rgb(66, 66, 66);
+  border-radius: 2px;
+  background-color: var(--periwinkle-crayola);
+  margin-bottom: 5px;
 }
 
-select{
-  width: 100%;
+#container > footer {
+  margin: 0px;
+  padding: 2px;
+  text-align: center;
 }

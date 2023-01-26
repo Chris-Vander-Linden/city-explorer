@@ -1,0 +1,11 @@
+header {
+  text-align: center;
+}
+
+header a,
+header a:hover,
+header a:active,
+header a:visited {
+  text-decoration: none;
+  color: var(--rich-black-fogra-39)
+}
