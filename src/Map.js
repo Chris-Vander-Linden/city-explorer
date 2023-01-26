@@ -1,5 +1,5 @@
 import React from 'react';
-import maplibregl from 'maplibre-gl';
+import mapboxgl from 'mapbox-gl';
 import './Map.css';
 
 class Map extends React.Component {
@@ -8,14 +8,14 @@ class Map extends React.Component {
 
     let zoom = lon !== 0 ? 8 : 1;
 
-    const map = new maplibregl.Map({
+    const map = new mapboxgl.Map({
       container: 'map',
       style: 'https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL',
       center: [lon, lat],
       zoom
     });
 
-    new maplibregl.Marker().setLngLat([lon, lat]).addTo(map);
+    new mapboxgl.Marker().setLngLat([lon, lat]).addTo(map);
   }
 
   componentDidMount() {
