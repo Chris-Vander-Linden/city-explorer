@@ -17,7 +17,7 @@ class App extends React.Component {
       city: '',
       results: [],
       error: false,
-      preventMapSearch: false,
+      preventMapSearch: true,
       mapFormElem: null,
       mapFormElemHeight: null
     };
@@ -37,9 +37,11 @@ class App extends React.Component {
 
   handleFormChange = (event) => {
     // if the search value contains '...', then the placeholder is still selected.
-    let preventMapSearch = event.target.value.includes('...');
+    let preventMapSearch = event.target.value.includes('...') || event.target.value === '';
 
-    this.setState({city: event.target.value, preventMapSearch}) ;
+    this.setState({city: event.target.value,
+      error: false,
+      preventMapSearch}) ;
   }
 
   handleSubmit = (event) => {
@@ -60,7 +62,9 @@ class App extends React.Component {
       }).catch(error => {
         // update error message in state and log
         this.setState({error: error.message, 
-                      preventMapSearch: true}); 
+                      preventMapSearch: true,
+                      city: ''
+                    }); 
         console.error(error.message);
       });
   }
