@@ -65,6 +65,7 @@ This is an application for searching addresses and displaying maps.
 
     Start time: 1/26/23 1:00 PM
 
-    Finish time: _____
+    Finish time: 1/27/23
 
-    Actual time needed to complete: _____
+    Actual time needed to complete: 2 hours.
+
