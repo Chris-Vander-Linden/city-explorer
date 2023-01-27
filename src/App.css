@@ -32,7 +32,6 @@ body {
   padding: 5px;
   background-color: var(--purple-navy);
   border-radius: 2px;
-  min-height: calc(100vh - 10px);
 }
 
 #container > * {

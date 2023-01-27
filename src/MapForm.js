@@ -4,38 +4,47 @@ import Form from 'react-bootstrap/Form';
 import './MapForm.css';
 
 class MapForm extends React.Component {
- 
+  constructor (props) {
+    super(props);
+    this.myRef = React.createRef();
+  }
+
+  // send form ref to App.js, so I can later check for height changes.
+  componentDidMount() {
+    this.props.onSetFormHeight(this.myRef);
+  }
+
   render() {
     // create list of results.
     const resultList = this.props.results.map(result => <option key={ result.place_id
     }>{ result.display_name }</option>);
 
     return <>
-        <div id="formContainer">
+      <div id="formContainer" ref={ this.myRef }>
         { this.props.results.length === 1 && <div id="resultsContainer">
           Name: { this.props.results[0]?.display_name }
-          { ` (Latitude:  ${this.props?.results[0]?.lat}, Longitude: ${ this.props?.results[0]?.lon })`} </div> }
-        <Form onSubmit={ this.props.onHandleSubmit}>
+          { ` (Latitude:  ${this.props?.results[0]?.lat}, Longitude: ${this.props?.results[0]?.lon})` } </div> }
+        <Form onSubmit={ this.props.onHandleSubmit }>
 
-            {/* search for city by zip or name */}
-            {this.props.results.length === 0 && <Form.Group className="mb-3" controlId="formSearchCity">
-              <Form.Label>City: </Form.Label>
-              <Form.Control type="text" placeholder="Type city or zip code..." name='city' value={this.props.city} onChange={this.props.onHandleFormChange}/>
-            </Form.Group>}
+          {/* search for city by zip or name */ }
+          { this.props.results.length === 0 && <Form.Group className="mb-3" controlId="formSearchCity">
+            <Form.Label>City: </Form.Label>
+            <Form.Control isInvalid={ this.props.error && !this.props.city } isValid={ this.props.city !== '' && !this.props.city.includes('...') } type="text" placeholder={ !this.props.error ? "Type city or zip code..." : `${this.props.error}!  Try again.` } name='city' value={ this.props.city } onChange={ this.props.onHandleFormChange } />
+          </Form.Group> }
 
-            {/* if more than 1 city, then create select to narrow result to just 1 */}
-            {this.props.results.length > 1 && <Form.Group className="mb-3" controlId="formSelectCity">
+          {/* if more than 1 city, then create select to narrow result to just 1 */ }
+          { this.props.results.length > 1 && <Form.Group className="mb-3" controlId="formSelectCity">
             <Form.Label>Which City? </Form.Label>
-            <Form.Select aria-label="Select City" value={ this.props.city } onChange={ this.props.onHandleFormChange}>
-                <option key="-">Select city from dropdown...</option>
-                {resultList}
-              </Form.Select>
-            </Form.Group>}
+            <Form.Select aria-label="Select City" value={ this.props.city } onChange={ this.props.onHandleFormChange } isInvalid={ this.props.city.includes('...') } isValid={ !this.props.city.includes('...') }>
+              <option key="-">Select city from dropdown...</option>
+              { resultList }
+            </Form.Select>
+          </Form.Group> }
 
-            {/* change button text based on condition of form */}
-            <Button variant="primary" type="submit">{this.props.results.length === 1 ? 'Search Again?' : this.props.results.length === 0 ? 'Explore!' : 'Select City'}</Button>
-          </Form>
-        </div>
+          {/* change button text based on condition of form */ }
+          <Button disabled={ this.props.preventMapSearch && this.props.results.length !== 1 ? true : false } type="submit">{ this.props.results.length === 1 ? 'Search Again?' : this.props.results.length === 0 ? 'Explore!' : (this.props.preventMapSearch && this.props.results.length !== 1 ? true : false) ? 'Select city from the list above.' : 'Explore!' }</Button>
+        </Form>
+      </div>
     </>
   };
 };
