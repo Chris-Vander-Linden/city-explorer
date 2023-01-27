@@ -16,12 +16,30 @@ class App extends React.Component {
     this.state = {
       city: '',
       results: [],
-      error: false
+      error: false,
+      preventMapSearch: false,
+      mapFormElem: null,
+      mapFormElemHeight: null
     };
   }
 
+  // set map form element ref, so I can check for height changes
+  setFormElem = (elem) => {
+    this.setState({mapFormElem: elem})
+  }
+
+  refreshMapFormHeight = () => {
+    // compare old height in state with present ref height
+    if (this.state?.mapFormElem?.current?.clientHeight !== this.state?.mapFormElemHeight) {
+      this.setState({mapFormElemHeight: this.state?.mapFormElem?.current?.clientHeight})
+    }
+  }
+
   handleFormChange = (event) => {
-    this.setState({city: event.target.value}) 
+    // if the search value contains '...', then the placeholder is still selected.
+    let preventMapSearch = event.target.value.includes('...');
+
+    this.setState({city: event.target.value, preventMapSearch}) ;
   }
 
   handleSubmit = (event) => {
@@ -35,20 +53,33 @@ class App extends React.Component {
 
     // else fetch data from API
     axios.get(`https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${this.state.city}&format=json`).then(response => {
-      console.log(response.data);
-      this.setState({results: response.data}); 
+        // update results and make sure errors is set to false
+        this.setState({results: response.data,
+                      error: false, 
+                      preventMapSearch: true}); 
       }).catch(error => {
-        console.log('city error')
-        console.error(error);
+        // update error message in state and log
+        this.setState({error: error.message, 
+                      preventMapSearch: true}); 
+        console.error(error.message);
       });
+  }
+
+  componentDidUpdate () {
+    this.refreshMapFormHeight();
+  }
+
+  componentDidMount ()  {
+    // potentially update mapFormHeight state on resize.
+    window.addEventListener("resize",this.refreshMapFormHeight);
   }
 
   render() {
     return (
       <div id='container'>
         <Header />
-        <MapForm results={this.state.results} onHandleFormChange={this.handleFormChange} onHandleSubmit={this.handleSubmit}/>
-        <Map results={this.state.results}/>
+        <MapForm results={this.state.results} error={this.state.error} city={this.state.city} onHandleFormChange={this.handleFormChange} onHandleSubmit={this.handleSubmit} preventMapSearch={this.state.preventMapSearch} onSetFormHeight={this.setFormElem}/>
+        <Map results={this.state.results} mapFormElemHeight={this.state.mapFormElemHeight}/>
         <footer>&copy; Chris Vander Linden {new Date().getFullYear()}</footer>
       </div>
     );

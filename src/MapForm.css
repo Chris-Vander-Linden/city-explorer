@@ -1,5 +1,5 @@
 #formContainer {
-  min-height: calc(15vh - 5px);
+  min-height: 50px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -39,8 +39,14 @@ button.btn-primary:hover {
   background-color: rgb(228, 151, 10) !important;
 }
 
-#resultsContainer {
+#formContainer #resultsContainer {
   background-color: rgb(240, 240, 240);
   border-radius: 5px;
+  padding: 5px;
   font-style: italic;
+}
+
+.form-control, .form-select, #formContainer #resultsContainer {
+  margin-bottom: 5px !important;
+  border: 1px solid rgb(44, 44, 44) !important;
 }

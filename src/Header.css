@@ -1,5 +1,10 @@
 header {
   text-align: center;
+  height: 56px;
+}
+
+header h1 {
+  font-size: 32px;
 }
 
 header a,
@@ -7,5 +12,5 @@ header a:hover,
 header a:active,
 header a:visited {
   text-decoration: none;
-  color: var(--rich-black-fogra-39)
+  color: var(--rich-black-fogra-39);
 }
