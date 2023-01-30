@@ -13,9 +13,7 @@ This updated version will allow for exploration of various types of venues, even
 2. Get your own API key for [LocationIQ](https://locationiq.com/)
 3. Create a .env file with the following:
     REACT_APP_LOCATION_KEY=[YOUR PERSONAL KEY VALUE]
-4. After opening the application in the root directory, type:
-    npm install
-    npm start
+4. After opening the application in the root directory, type: "npm install" then "npm start"
 
 ## Architecture
 
