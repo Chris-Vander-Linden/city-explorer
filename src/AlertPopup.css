@@ -1,0 +1,7 @@
+#contentContainer div > p {
+  font-style: italic;
+}
+
+#contentContainer div > button.btn-close:focus {
+  box-shadow: none;
+}
