@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Table from 'react-bootstrap/Table';
+import AlertPopup from './AlertPopup.js';
 import './Weather.css'
 
 class Weather extends React.Component {
@@ -13,9 +14,9 @@ class Weather extends React.Component {
     };
   }
 
-
   updateWeather(){
-      axios.get(`https://city-explorer-api-jqdk.onrender.com/weather?lon=-122.33207&lat=47.60621`).then(response => {
+
+    axios.get(`https://city-explorer-api-jqdk.onrender.com/weather?lon=-122.33207&lat=47.60621`).then(response => {
         // update results and make sure errors is set to false
         this.setState({forecasts: response.data}); 
       }).catch(error => {
@@ -26,7 +27,7 @@ class Weather extends React.Component {
   }
 
   createTable(arrayObj){
-    return <Table responsive hover>
+    return arrayObj?.length < 1 ? <AlertPopup heading={ this.state.error} /> : <Table responsive hover>
       <thead>
         <tr>
           <th>#</th>
