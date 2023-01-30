@@ -1,12 +1,10 @@
 import React from 'react';
 import mapboxgl from 'mapbox-gl';
-import './Map.css';
+import './Map.css'
 
 class Map extends React.Component {
-  constructor (props) {
-    super(props);
-    this.state = { mapFormHeight: null }
-  }
+
+
 
   updateMap = (lon, lat) => {
 
@@ -28,21 +26,12 @@ class Map extends React.Component {
   }
 
   render() {
+
     // update if only 1 result
     this.props.results.length === 1 && this.updateMap(this.props?.results[0]?.lon, this.props?.results[0]?.lat);
 
-    return <>
-      {/* display static map 
-        {this.state.results.length === 1 && <img src={`https://maps.locationiq.com/v3/staticmap?key=${API_KEY}&center=${this.state.results[0]?.lat},${this.state.results[0]?.lon}&zoom= 1-18`} alt={this.state.results[0]?.display_name} />}
-        */}
-
-      <div id="mapContainer">
-        {/* #map needs the ref from #formContainer, so I can dynamically update the height */ }
-        <div id="map" style={ { minHeight: `calc(100vh - ${(136 + this.props.mapFormElemHeight)}px)` } }></div>
-      </div>
-    </>
+    return <div id="map" style={ !this.props.show ? { visibility: 'hidden' } : {} }></div>;
   }
-
 }
 
-export default Map
+export default Map;

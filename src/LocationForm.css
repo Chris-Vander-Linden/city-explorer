@@ -68,7 +68,7 @@
 }
 
 /* Submit Button */
-button.btn-primary,
+.btn:disabled, button.btn-primary,
 button.btn-primary:not(.btn-check) + .btn:active,
 button.btn-primary:visited,
 .btn-check:checked + .btn,
@@ -78,7 +78,7 @@ button.btn-primary:visited,
 :not(.btn-check) + .btn:active,
 :not(.btn-check) + .btn:active {
   background-color: var(--action) !important;
-  border-color: black;
+  border-color: black !important;
 }
 
 button.btn-primary:hover {

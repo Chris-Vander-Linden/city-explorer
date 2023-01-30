@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import Header from './Header.js';
-import Map from './Map.js';
-import MapForm from './MapForm.js';
+import Content from './Content.js';
+import LocationForm from './LocationForm.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -82,8 +82,8 @@ class App extends React.Component {
     return (
       <div id='container'>
         <Header />
-        <MapForm results={this.state.results} error={this.state.error} city={this.state.city} onHandleFormChange={this.handleFormChange} onHandleSubmit={this.handleSubmit} preventMapSearch={this.state.preventMapSearch} onSetFormHeight={this.setFormElem}/>
-        <Map results={this.state.results} mapFormElemHeight={this.state.mapFormElemHeight}/>
+        <LocationForm results={this.state.results} error={this.state.error} city={this.state.city} onHandleFormChange={this.handleFormChange} onHandleSubmit={this.handleSubmit} preventMapSearch={this.state.preventMapSearch} onSetFormHeight={this.setFormElem}/>
+        <Content results={this.state.results} mapFormElemHeight={this.state.mapFormElemHeight}/>
         <footer>&copy; Chris Vander Linden {new Date().getFullYear()}</footer>
       </div>
     );

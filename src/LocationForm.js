@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import './MapForm.css';
+import './LocationForm.css';
 
 class MapForm extends React.Component {
   constructor (props) {

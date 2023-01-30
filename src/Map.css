@@ -1,9 +1,0 @@
-#mapContainer {
-  position: relative;
-}
-
-#map {
-  width: 100%;
-  /* Subtract fixed height of other elements. I can't get this pixel perfect due to Bootstrap's built in relative sizes. */
-  min-height: calc(100vh - 240px);
-}
