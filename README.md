@@ -29,3 +29,15 @@ On the front end this application uses ReactJS, a few Bootstrap components, and 
 
 React documentation
 Bootstrap React documentation
+
+## Work Tickets
+
+Name of feature: Add New Components, Navigation, Error Handling
+
+Estimate of time needed to complete: 4 hours
+
+Start time: 1/29/23: 11:00 AM
+
+Finish time: 1/30/23: 11:45 AM
+
+Actual time needed to complete: 6 hours
