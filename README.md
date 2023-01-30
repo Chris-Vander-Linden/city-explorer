@@ -68,4 +68,3 @@ This is an application for searching addresses and displaying maps.
     Finish time: 1/27/23
 
     Actual time needed to complete: 2 hours.
-
