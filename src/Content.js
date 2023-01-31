@@ -40,7 +40,7 @@ class Content extends React.Component {
   }
 
   render() {
-
+    console.log(this.props);
     return <>
       {/* #contentContainer needs the ref from #formContainer, so I can dynamically update the height by subtracting the static element height and the dynamic form area height. */ }
       <div id="contentContainer" style={ { height: `calc(100vh - ${(124 + this.props.mapFormElemHeight)}px)` } }>
@@ -48,10 +48,10 @@ class Content extends React.Component {
         <Nav { ...this.state } onHandleNavClick={ this.handleNavClick } />
 
 
-        <Map show={ this.state.mapShow } results={ this.props.results } lat={ this.props.lat } lon={ this.props.lon } />
-        <Weather show={ this.state.weatherShow } results={ this.props.results } lat={ this.props.lat } lon={ this.props.lon } />
-        <Movies show={ this.state.movieShow } results={ this.props.results } lat={ this.props.lat } lon={ this.props.lon } />
-        <Food show={ this.state.foodShow } results={ this.props.results } lat={ this.props.lat } lon={ this.props.lon } />
+        <Map show={ this.state.mapShow } results={ this.props.results } />
+        <Weather show={ this.state.weatherShow } results={ this.props.results } />
+        <Movies show={ this.state.movieShow } results={ this.props.results } />
+        <Food show={ this.state.foodShow } results={ this.props.results } />
       </div>
     </>
   }
