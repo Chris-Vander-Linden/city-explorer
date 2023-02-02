@@ -1,0 +1,28 @@
+.tableContainer {
+  border: 1px solid black;
+  background-color: rgb(255, 255, 255);
+  height: 100%;
+  overflow: scroll;
+  position: relative;
+}
+
+table.table {
+  margin-bottom: 0px;
+}
+
+table td,
+table th {
+  min-width: 70px;
+  vertical-align: middle;
+  padding: 0px 0px 0px 10px;
+}
+
+table th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+}
+
+.tableContainer .table-responsive {
+  overflow-x: initial;
+}
