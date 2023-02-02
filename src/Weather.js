@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import createTable from './createTable.js';
+import APITable from './APITable.js';
 import './Weather.css'
 
 class Weather extends React.Component {
@@ -12,9 +12,10 @@ class Weather extends React.Component {
       error: false
     };
   }
-
   updateData() {
-    this.props?.results[0]?.lat && axios.get(`https://city-explorer-api-jqdk.onrender.com/weatherAPI?lat=${this.props.results[0].lat}&lon=${this.props.results[0].lon}`).then(response => {
+    //http://localhost:3003/weatherAPI
+    //https://city-explorer-api-jqdk.onrender.com/weatherAPI
+    this.props?.results[0]?.lat && axios.get(`http://localhost:3003/weatherAPI?lat=${this.props.results[0].lat}&lon=${this.props.results[0].lon}`).then(response => {
       // update results and make sure errors is set to false
 
       this.setState({
@@ -41,7 +42,7 @@ class Weather extends React.Component {
       return obj;
     });
 
-    const table = createTable(formattedData, this.state.error);
+    const table = <APITable arrayObj={formattedData} error={this.state.error} />;
 
     // rather than fetch the data every time the component renders, hide it, so it can fetch in the background and is ready to be displayed when active.
     return <div id="weather" style={ !this.props.show ? { visibility: 'hidden' } : {} }>
