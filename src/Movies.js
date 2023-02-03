@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import APITable from './APITable.js';
+import { TbMovieOff } from "react-icons/tb";
 import './Movies.css'
 
 class Movies extends React.Component {
@@ -37,14 +38,15 @@ class Movies extends React.Component {
 
   render() {
     const formattedData = this.state.data.map(obj => {
-      obj = { ...obj, cover: <><img src={ obj.cover } alt={ obj.title } /></> };
+      obj = { ...obj, cover: <>{!obj.cover.includes('null') ? <img src={ obj.cover } alt={ obj.title } /> : <TbMovieOff /> }</> };
 
       return obj;
     });
 
     // rather than fetch the data every time the component renders, hide it, so it can fetch in the background and is ready to be displayed when active.
+    // pass in an array of column #s that need to be deleted from table.  I might use this data later for a modal, so I still need it.
     return <div id="movies" style={ !this.props.show ? { visibility: 'hidden' } : {} }>
-      <APITable arrayObj={ formattedData } error={ this.state.error } removeColumns={ [0,3,4] } />
+      <APITable arrayObj={ formattedData } error={ this.state.error } removeColumns={ [0, 3, 4] } />
     </div>;
   }
 }

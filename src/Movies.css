@@ -6,3 +6,7 @@
 #movies td:nth-child(3){
   width: 0px;
 }
+
+#movies td svg{
+  font-size: 45px;
+}

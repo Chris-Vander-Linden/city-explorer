@@ -29,6 +29,7 @@
   border-radius: 5px;
   padding: 5px;
   font-style: italic;
+  text-align: center;
 }
 
 #formContainer #resultsContainer span{

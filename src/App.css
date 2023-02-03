@@ -1,14 +1,13 @@
 /* color scheme */
 /* CSS HEX */
 :root {
---rich-black-fogra-39: rgb(0, 5, 5);
---english-violet: rgb(59, 51, 85);
---purple-navy: rgb(93, 93, 129);
---periwinkle-crayola: rgb(191, 205, 224);
---white: rgb(254, 252, 253);
---action: rgb(236, 154, 41);
+  --rich-black-fogra-39: rgb(0, 5, 5);
+  --english-violet: rgb(59, 51, 85);
+  --purple-navy: rgb(93, 93, 129);
+  --periwinkle-crayola: rgb(191, 205, 224);
+  --white: rgb(254, 252, 253);
+  --action: rgb(236, 154, 41);
 }
-
 
 /* resets */
 * {
@@ -17,13 +16,18 @@
   padding: 0;
 }
 
+/* override Bootstrap !important rules */
+:root * {
+  border-radius: 3px !important;
+}
+
 svg {
-    vertical-align: -3px;
+  vertical-align: -3px;
 }
 
 html > body {
   background-color: var(--english-violet);
-  color: var(--rich-black-fogra-39)
+  color: var(--rich-black-fogra-39);
 }
 
 body {
