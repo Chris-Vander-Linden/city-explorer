@@ -1,20 +1,35 @@
+#contentContainer > div table th {
+  background-color: rgb(50, 50, 50);
+  color: #fff;
+}
+
+#contentContainer table img {
+  height: 60px;
+}
+
 .tableContainer {
-  border: 1px solid black;
+  border: 1px solid rgb(0, 0, 0);
   background-color: rgb(255, 255, 255);
   height: 100%;
   overflow: scroll;
   position: relative;
 }
 
+.tableContainer > span {
+  padding: 5px;
+  font-style: italic;
+  font-weight: bold;
+}
+
 table.table {
   margin-bottom: 0px;
 }
 
-table td,
-table th {
+#contentContainer table td,
+#contentContainer table th {
   min-width: 70px;
   vertical-align: middle;
-  padding: 0px 0px 0px 10px;
+  padding: 5px 5px 5px 10px;
 }
 
 table th {
@@ -25,4 +40,9 @@ table th {
 
 .tableContainer .table-responsive {
   overflow-x: initial;
+}
+
+th:nth-child(1),
+td:nth-child(1) {
+  display: none;
 }

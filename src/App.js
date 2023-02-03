@@ -61,7 +61,6 @@ class App extends React.Component {
       this.state.results.length > 1 ? this.setState({ results: this.state.results.filter(result => result.display_name === this.state.city), callAPIs: false }) :
         // else fetch data from API
         axios.get(`https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${this.state.city}&format=json`).then(response => {
-
           // update results and make sure errors is set to false
           this.setState({
             results: response.data,

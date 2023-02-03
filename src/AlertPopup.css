@@ -5,3 +5,7 @@
 #contentContainer div > button.btn-close:focus {
   box-shadow: none;
 }
+
+div.alert-danger {
+  margin: 8px;
+}

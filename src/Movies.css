@@ -1,3 +1,18 @@
 #movies {
-  background-color: rgb(55, 52, 52);
+  background-color: rgb(149, 89, 134);
+}
+
+/* modifications to table */
+#movies td:nth-child(2),
+#movies th:nth-child(2),
+#movies td:nth-child(5),
+#movies th:nth-child(5),
+#movies td:nth-child(6),
+#movies th:nth-child(6) {
+  display: none;
+}
+
+/* force movie thumb img td to fit content */
+#movies td:nth-child(3){
+  width: 0px;
 }
