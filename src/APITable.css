@@ -32,10 +32,12 @@ table.table {
   padding: 5px 5px 5px 10px;
 }
 
-table th {
+#contentContainer table th {
   position: -webkit-sticky;
   position: sticky;
   top: 0px;
+
+  border-radius: 0px !important;
 }
 
 .tableContainer .table-responsive {

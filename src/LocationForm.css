@@ -32,7 +32,7 @@
   text-align: center;
 }
 
-#formContainer #resultsContainer span{
+#formContainer #resultsContainer span {
   font-weight: bold;
 }
 
@@ -69,7 +69,8 @@
 }
 
 /* Submit Button */
-.btn:disabled, button.btn-primary,
+.btn:disabled,
+button.btn-primary,
 button.btn-primary:not(.btn-check) + .btn:active,
 button.btn-primary:visited,
 .btn-check:checked + .btn,
@@ -80,6 +81,9 @@ button.btn-primary:visited,
 :not(.btn-check) + .btn:active {
   background-color: var(--action) !important;
   border-color: black !important;
+
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 button.btn-primary:hover {

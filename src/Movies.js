@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import APITable from './APITable.js';
-import { TbMovieOff } from "react-icons/tb";
+import { TbMovieOff } from 'react-icons/tb';
+import { CiFaceFrown, CiFaceMeh, CiFaceSmile } from 'react-icons/ci'
 import './Movies.css'
 
 class Movies extends React.Component {
@@ -37,8 +38,9 @@ class Movies extends React.Component {
   }
 
   render() {
+    // table modifications for movies
     const formattedData = this.state.data.map(obj => {
-      obj = { ...obj, cover: <>{!obj.cover.includes('null') ? <img src={ obj.cover } alt={ obj.title } /> : <TbMovieOff /> }</> };
+      obj = { ...obj, cover: <>{ !obj.cover.includes('null') ? <img src={ obj.cover } alt={ obj.title } /> : <TbMovieOff /> }</>, vote: <div className={ `vote ${obj.vote[0] > 6 ? 'good' : obj.vote[0] > 4 ? 'okay' : 'bad'}` }>{ obj.vote[0] > 6 ? <CiFaceSmile /> : obj.vote[0] > 4 ? <CiFaceMeh /> : <CiFaceFrown /> } <div>{ obj.vote }</div></div> };
 
       return obj;
     });
