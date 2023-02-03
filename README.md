@@ -23,10 +23,13 @@ On the front end this application uses ReactJS, a few Bootstrap components, and 
 
 01-30-2023 11:30 AM - Application now has navigation for components, a table to display mock weather data from remote server, and error handling.
 
+02-3-2023 1:00 AM - Application is now connecting to the backend to pull weather and movie data.  There is a table component that is being used to display the incoming data.
+
 ## Credit and Collaborations
 
 React documentation
 Bootstrap React documentation
+MDN documentation
 
 ## Work Tickets
 
