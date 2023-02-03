@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './LocationForm.css';
 
-class MapForm extends React.Component {
+class LocationForm extends React.Component {
   constructor (props) {
     super(props);
     this.myRef = React.createRef();
@@ -48,4 +48,4 @@ class MapForm extends React.Component {
   };
 };
 
-export default MapForm;
+export default LocationForm;

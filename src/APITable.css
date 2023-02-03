@@ -41,8 +41,3 @@ table th {
 .tableContainer .table-responsive {
   overflow-x: initial;
 }
-
-th:nth-child(1),
-td:nth-child(1) {
-  display: none;
-}

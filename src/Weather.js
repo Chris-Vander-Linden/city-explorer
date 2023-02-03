@@ -12,7 +12,7 @@ class Weather extends React.Component {
       error: false
     };
   }
-  
+
   updateData() {
     //http://localhost:3003/weatherAPI
     //https://city-explorer-api-jqdk.onrender.com/weatherAPI
