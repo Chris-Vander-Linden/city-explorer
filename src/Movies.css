@@ -6,6 +6,19 @@
   font-size: 45px;
 }
 
+/*
+#movies table.table {
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+#movies table.table td:nth-child(3) {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 200px;
+}
+*/
 .vote {
   display: flex;
   flex-direction: column;
