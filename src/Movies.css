@@ -1,3 +1,41 @@
 #movies {
-  background-color: rgb(55, 52, 52);
+  background-color: rgb(149, 89, 134);
+}
+
+#movies td svg {
+  font-size: 45px;
+}
+
+/*
+#movies table.table {
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+#movies table.table td:nth-child(3) {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 200px;
+}
+*/
+.vote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid rgb(85, 82, 82);
+  height: 60px;
+  width: 45px;
+
+  background-color: rgb(255, 253, 162);
+}
+
+.vote.good {
+  background-color: rgb(202, 255, 202);
+}
+
+.vote.bad {
+  background-color: rgb(255, 227, 227);
 }

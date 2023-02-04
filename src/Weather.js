@@ -12,12 +12,12 @@ class Weather extends React.Component {
       error: false
     };
   }
+
   updateData() {
     //http://localhost:3003/weatherAPI
     //https://city-explorer-api-jqdk.onrender.com/weatherAPI
     this.props?.results[0]?.lat && axios.get(`https://city-explorer-api-jqdk.onrender.com/weatherAPI?lat=${this.props.results[0].lat}&lon=${this.props.results[0].lon}`).then(response => {
       // update results and make sure errors is set to false
-
       this.setState({
         data: response.data
       });
@@ -32,21 +32,19 @@ class Weather extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     // THE ONLY TIME YOU WANT TO CALL THE API IS WHEN THERE IS A CITY UPDATE!!!
     this.props.callAPIs && !prevProps.callAPIs && this.updateData();
-
   }
 
   render() {
     const formattedData = this.state.data.map(obj => {
+      // I could have sent the entire url from the server but wanted to simulate having incomplete data.
       obj = { ...obj, icon: <><img src={ `https://www.weatherbit.io/static/img/icons/${obj.icon}.png` } alt='weather' /></> };
 
       return obj;
     });
 
-    const table = <APITable arrayObj={ formattedData } error={ this.state.error } />;
-
     // rather than fetch the data every time the component renders, hide it, so it can fetch in the background and is ready to be displayed when active.
     return <div id="weather" style={ !this.props.show ? { visibility: 'hidden' } : {} }>
-      { table ? table : <span>Please search for a city above...</span> }
+      <APITable arrayObj={ formattedData } error={ this.state.error } />
     </div>;
   }
 }
