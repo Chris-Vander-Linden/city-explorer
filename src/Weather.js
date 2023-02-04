@@ -16,7 +16,7 @@ class Weather extends React.Component {
   updateData() {
     //http://localhost:3003/weatherAPI
     //https://city-explorer-api-jqdk.onrender.com/weatherAPI
-    this.props?.results[0]?.lat && axios.get(`https://city-explorer-api-jqdk.onrender.com/weatherAPI?lat=${this.props.results[0].lat}&lon=${this.props.results[0].lon}`).then(response => {
+    this.props?.results[0]?.lat && axios.get(`http://localhost:3003/weatherAPI?lat=${this.props.results[0].lat}&lon=${this.props.results[0].lon}`).then(response => {
       // update results and make sure errors is set to false
       this.setState({
         data: response.data
