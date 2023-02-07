@@ -1,3 +1,10 @@
+/* resets */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 /* color scheme */
 /* CSS HEX */
 :root {
@@ -9,16 +16,10 @@
   --action: rgb(236, 154, 41);
 }
 
-/* resets */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 /* override Bootstrap !important rules */
 :root * {
-  border-radius: 3px !important;
+  border-radius: 5px;
+  border-color: rgb(0, 0, 0);
 }
 
 svg {
@@ -44,8 +45,8 @@ body {
 
 #container > * {
   padding: 5px;
-  border: 1px solid rgb(66, 66, 66);
-  border-radius: 2px;
+  border: 1px solid rgb(0, 0, 0);
+
   background-color: var(--periwinkle-crayola);
   margin-bottom: 5px;
 }

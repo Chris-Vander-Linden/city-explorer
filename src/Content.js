@@ -50,6 +50,7 @@ class Content extends React.Component {
         <Weather show={ this.state.weatherShow } results={ this.props.results } callAPIs={ this.props.callAPIs } />
         <Movies show={ this.state.movieShow } results={ this.props.results } callAPIs={ this.props.callAPIs } />
         <Food show={ this.state.foodShow } results={ this.props.results } callAPIs={ this.props.callAPIs } />
+
       </div>
     </>
   }

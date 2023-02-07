@@ -44,7 +44,7 @@ class Weather extends React.Component {
 
     // rather than fetch the data every time the component renders, hide it, so it can fetch in the background and is ready to be displayed when active.
     return <div id="weather" style={ !this.props.show ? { visibility: 'hidden' } : {} }>
-      <APITable arrayObj={ formattedData } error={ this.state.error } />
+      <APITable arrayObj={ formattedData } error={ this.state.error } cityName={ this.props?.results[0]?.display_name } tableType='weather' validTable={ this.props?.results.length === 1 } />
     </div>;
   }
 }

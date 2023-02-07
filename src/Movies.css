@@ -1,24 +1,9 @@
-#movies {
-  background-color: rgb(149, 89, 134);
-}
-
 #movies td svg {
   font-size: 45px;
+  height: 60px;
+  display: inline-block;
 }
 
-/*
-#movies table.table {
-  table-layout: fixed;
-  border-collapse: collapse;
-}
-
-#movies table.table td:nth-child(3) {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  width: 200px;
-}
-*/
 .vote {
   display: flex;
   flex-direction: column;

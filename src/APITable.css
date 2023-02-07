@@ -3,6 +3,10 @@
   color: #fff;
 }
 
+table.table {
+  margin-bottom: 0px;
+}
+
 #contentContainer table img {
   height: 60px;
 }
@@ -13,16 +17,6 @@
   height: 100%;
   overflow: scroll;
   position: relative;
-}
-
-.tableContainer > span {
-  padding: 5px;
-  font-style: italic;
-  font-weight: bold;
-}
-
-table.table {
-  margin-bottom: 0px;
 }
 
 #contentContainer table td,
@@ -42,4 +36,18 @@ table.table {
 
 .tableContainer .table-responsive {
   overflow-x: initial;
+}
+
+/* no data table message */
+.tableContainer div#noResults {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-style: italic;
+  font-weight: bold;
+
+  height: 60%;
+  text-align: center;
 }
