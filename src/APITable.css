@@ -3,6 +3,10 @@
   color: #fff;
 }
 
+table.table {
+  margin-bottom: 0px;
+}
+
 #contentContainer table img {
   height: 60px;
 }
@@ -13,10 +17,6 @@
   height: 100%;
   overflow: scroll;
   position: relative;
-}
-
-table.table {
-  margin-bottom: 0px;
 }
 
 #contentContainer table td,
