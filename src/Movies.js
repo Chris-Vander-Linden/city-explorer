@@ -38,7 +38,6 @@ class Movies extends React.Component {
   }
 
   render() {
-    console.log(this.state.data);
     // table modifications for movies
     const formattedData = this.state.data.map(obj => {
       obj = { ...obj, cover: <>{ !obj.cover.includes('null') ? <img src={ obj.cover } alt={ obj.title } /> : <TbMovieOff /> }</>, vote: <div className={ `vote ${parseInt(obj.vote) > 60 ? 'good' : parseInt(obj.vote) > 40 ? 'okay' : 'bad'}` }>{ parseInt(obj.vote) > 60 ? <CiFaceSmile /> : parseInt(obj.vote) > 40 ? <CiFaceMeh /> : <CiFaceFrown /> } <div>{ obj.vote }%</div></div> };

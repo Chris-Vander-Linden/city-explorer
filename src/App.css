@@ -19,6 +19,7 @@
 /* override Bootstrap !important rules */
 :root * {
   border-radius: 3px !important;
+  border-color: rgb(0, 0, 0);
 }
 
 svg {
@@ -59,12 +60,4 @@ body {
   margin: 0px;
   padding: 2px;
   text-align: center;
-}
-
-
-
-
-.loading{
-  z-index: 10;
-  position: absolute;
 }

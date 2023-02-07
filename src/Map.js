@@ -33,7 +33,8 @@ class Map extends React.Component {
 
     map.on('sourcedata', e => {
       if (e.isSourceLoaded) {
-        this.setState({ loading: false });
+        // I need a time out because it is still painting
+        setTimeout(() => this.setState({ loading: false }), 700);
       }
     });
 
@@ -50,8 +51,7 @@ class Map extends React.Component {
   }
 
   render() {
-    console.log(this.state.loading);
-    return <>{ this.state.loading && <div className='loading'><div><ImSpinner11 />loading...</div></div> }<div id="map" style={ !this.props.show ? { visibility: 'hidden' } : {}
+    return <>{ this.state.loading && <div className='loading'><div><ImSpinner11 />loading...</div></div> }<div id='map' style={ !this.props.show ? { visibility: 'hidden' } : {}
     }></div></>;
   }
 }
