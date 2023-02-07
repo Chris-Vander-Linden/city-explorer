@@ -31,13 +31,12 @@ class Map extends React.Component {
 
     new mapboxgl.Marker().setLngLat([lon, lat]).addTo(map);
 
+    // remove loading screen
     map.on('sourcedata', e => {
       if (e.isSourceLoaded) {
-        // I need a time out because it is still painting
-        setTimeout(() => this.setState({ loading: false }), 700);
+        this.setState({ loading: false });
       }
     });
-
   }
 
   componentDidMount() {

@@ -45,7 +45,7 @@ class Food extends React.Component {
 
     return (
       <div id="food" style={ !this.props.show ? { visibility: 'hidden' } : {} }>
-        <APITable arrayObj={ formattedData } error={ this.state.error } removeColumns={ [] } keyProp={ 'distance' } />
+        <APITable arrayObj={ formattedData } error={ this.state.error } removeColumns={ [] } keyProp={ 'distance' } cityName={ this.props?.results[0]?.display_name } tableType='food' validTable={ this.props?.results.length === 1 } />
       </div>);
   }
 }
