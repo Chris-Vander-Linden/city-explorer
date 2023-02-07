@@ -1,10 +1,23 @@
 import React from 'react';
 import mapboxgl from 'mapbox-gl';
+import { ImSpinner11 } from 'react-icons/im';
 import './Map.css'
 
 class Map extends React.Component {
 
+  constructor (props) {
+    super(props);
+    // add state
+    this.state = {
+      loading: false
+    };
+  }
+
+
+
   updateMap = (lon = 0, lat = 0) => {
+
+    this.setState({ loading: true });
 
     // zoom in more after location is found.
     let zoom = lon !== 0 ? 12 : 1;
@@ -14,25 +27,32 @@ class Map extends React.Component {
       style: 'https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL',
       center: [lon, lat],
       zoom
-    });
+    })
 
     new mapboxgl.Marker().setLngLat([lon, lat]).addTo(map);
 
-    // update sat with this map, so I can only invoke function if the lat and lon have changed.
+    map.on('sourcedata', e => {
+      if (e.isSourceLoaded) {
+        this.setState({ loading: false });
+      }
+    });
+
   }
 
   componentDidMount() {
-  // default map setting on mount
+    // default map setting on mount
     this.updateMap(0, 0);
   }
 
-  componentDidUpdate(prevProps){
+  componentDidUpdate(prevProps) {
     // THE ONLY TIME YOU WANT TO CALL THE API IS WHEN THERE IS A CITY UPDATE!!!
     this.props.callAPIs && !prevProps.callAPIs && this.updateMap(this.props?.results[0]?.lon, this.props?.results[0]?.lat);
   }
 
   render() {
-    return <div id="map" style={ !this.props.show ? { visibility: 'hidden' } : {} }></div>;
+    console.log(this.state.loading);
+    return <>{ this.state.loading && <div className='loading'><div><ImSpinner11 />loading...</div></div> }<div id="map" style={ !this.props.show ? { visibility: 'hidden' } : {}
+    }></div></>;
   }
 }
 

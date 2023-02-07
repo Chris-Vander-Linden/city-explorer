@@ -9,6 +9,7 @@ class APITable extends React.Component {
     // this.props.arrayObj -> the object used to populate the table.
     // this.props.error -> the error object used for the popup alert.
     // this.props.removeColumns -> the array containing the columns to be removed from table.
+    // this.props.keyProp -> the property on the incoming object that should be used to build the unique key.
 
     return (
       <div className='tableContainer'> { this.props.error ? <AlertPopup heading={ this.props.error } /> : !this.props.arrayObj.length > 0 ? <span>Please search for a city in the searchbar above...</span> : <Table responsive hover striped>
@@ -31,7 +32,7 @@ class APITable extends React.Component {
         </thead>
         <tbody>{ this.props.arrayObj.map((obj, idx) => {
           return (
-            <tr key={ idx + 'tr' }>
+            <tr key={ idx + 'tr' + obj[this.props.keyProp] }>
               { Object.values(obj).filter((_td, idx) => {
 
                 let validTD = true;
@@ -44,7 +45,7 @@ class APITable extends React.Component {
                 }
 
                 return validTD;
-              }).map((value, idx) => <td key={ idx + value }>{ value }</td>) }
+              }).map((value, idx) => <td key={ idx + value + obj[this.props.keyProp] }>{ value !== '' ? value : '' }</td>) }
             </tr>)
         }) }
         </tbody>
