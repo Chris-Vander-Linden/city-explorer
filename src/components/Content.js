@@ -39,10 +39,15 @@ class Content extends React.Component {
     }
   }
 
+  // this will prevent content child components from rendering unless there is 1 city value, the nav items are clicked, or the form height has changed or is null.
+  shouldComponentUpdate(nextProps, nextState) {
+    return !(nextProps.results.length !== 1 && this.state === nextState) || nextProps.mapFormElemHeight !== this.props.mapFormElemHeight;
+  }
+
   render() {
     return <>
       {/* #contentContainer needs the ref from #formContainer, so I can dynamically update the height by subtracting the static element height and the dynamic form area height. */ }
-      <div id="contentContainer" style={ { height: `calc(100vh - ${(124 + this.props.mapFormElemHeight)}px)` } }>
+      <div id="contentContainer" style={ { height: `calc(100vh - ${(126 + this.props.mapFormElemHeight)}px)` } }>
         {/* Nav needs all state props */ }
         <Nav { ...this.state } onHandleNavClick={ this.handleNavClick } />
 

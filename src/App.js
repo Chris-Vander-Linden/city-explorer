@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import Header from './Header.js';
-import Content from './Content.js';
-import LocationForm from './LocationForm.js';
+import Header from './components/Header.js';
+import Content from './components/Content.js';
+import LocationForm from './components/LocationForm.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
