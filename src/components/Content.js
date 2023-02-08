@@ -42,7 +42,7 @@ class Content extends React.Component {
   render() {
     return <>
       {/* #contentContainer needs the ref from #formContainer, so I can dynamically update the height by subtracting the static element height and the dynamic form area height. */ }
-      <div id="contentContainer" style={ { height: `calc(100vh - ${(124 + this.props.mapFormElemHeight)}px)` } }>
+      <div id="contentContainer" style={ { height: `calc(100vh - ${(126 + this.props.mapFormElemHeight)}px)` } }>
         {/* Nav needs all state props */ }
         <Nav { ...this.state } onHandleNavClick={ this.handleNavClick } />
 
