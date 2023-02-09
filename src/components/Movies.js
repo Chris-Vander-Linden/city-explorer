@@ -19,7 +19,7 @@ class Movies extends React.Component {
     const cityName = this.props?.results[0]?.display_name?.match(/^[\w\s-]+\b/)[0];
     //http://localhost:3003/movieAPI
     //https://city-explorer-api-jqdk.onrender.com/movieAPI
-    this.props?.results[0]?.lat && axios.get(`https://city-explorer-api-jqdk.onrender.com/movieAPI?cityName=${cityName}`).then(response => {
+    this.props?.results[0]?.lat && axios.get(`http://localhost:3003/movieAPI?cityName=${cityName}`).then(response => {
       // update results and make sure errors is set to false
       this.setState({
         data: response.data

@@ -16,10 +16,11 @@ class Weather extends React.Component {
   updateData() {
     //http://localhost:3003/weatherAPI
     //https://city-explorer-api-jqdk.onrender.com/weatherAPI
-    this.props?.results[0]?.lat && axios.get(`https://city-explorer-api-jqdk.onrender.com/weatherAPI?lat=${this.props.results[0].lat}&lon=${this.props.results[0].lon}`).then(response => {
+    this.props?.results[0]?.lat && axios.get(`http://localhost:3003/weatherAPI?lat=${this.props.results[0].lat}&lon=${this.props.results[0].lon}`).then(response => {
       // update results and make sure errors is set to false
       this.setState({
-        data: response.data
+        data: response.data.data,
+        timeStamp: response.data.timeStamp
       });
 
     }).catch(error => {
@@ -34,7 +35,15 @@ class Weather extends React.Component {
     this.props.callAPIs && !prevProps.callAPIs && this.updateData();
   }
 
+  convertDate(dateObj) {
+    const date = new Date(dateObj)
+    return date.toLocaleTimeString('en-US') + ', ' + date.toLocaleString("default", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+  }
+
   render() {
+    // display this somewhere.
+    console.log(this.convertDate(this.state.timeStamp));
+
     const formattedData = this.state.data.map(obj => {
       // I could have sent the entire url from the server but wanted to simulate having incomplete data.
       obj = { ...obj, icon: <><img src={ `https://www.weatherbit.io/static/img/icons/${obj.icon}.png` } alt='weather' /></> };
