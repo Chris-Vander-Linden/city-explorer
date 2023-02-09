@@ -30,14 +30,14 @@ class Weather extends React.Component {
     });
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    // THE ONLY TIME YOU WANT TO CALL THE API IS WHEN THERE IS A CITY UPDATE!!!
-    this.props.callAPIs && !prevProps.callAPIs && this.updateData();
-  }
-
   convertDate(dateObj) {
     const date = new Date(dateObj)
     return date.toLocaleTimeString('en-US') + ', ' + date.toLocaleString("default", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // THE ONLY TIME YOU WANT TO CALL THE API IS WHEN THERE IS A CITY UPDATE!!!
+    this.props.callAPIs && !prevProps.callAPIs && this.updateData();
   }
 
   render() {
