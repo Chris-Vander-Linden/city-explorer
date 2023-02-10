@@ -13,7 +13,7 @@ class APITable extends React.Component {
 
     return (
       <div className='tableContainer'> { this.props.error ?
-        <AlertPopup heading={ this.props.error } /> : !this.props.arrayObj.length > 0 ?
+        <AlertPopup heading={ this.props.error } /> : !this.props.arrayObj?.length > 0 ?
 
           <div id='noResults'>
             { this.props.cityName !== undefined && this.props.validTable ? <h2>There are no { this.props.tableType } results for { this.props.cityName }!</h2> : null }

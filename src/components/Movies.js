@@ -11,7 +11,7 @@ class Movies extends React.Component {
     // add state
     this.state = {
       data: [],
-      error: false
+      error: false,
     };
   }
 
@@ -22,8 +22,8 @@ class Movies extends React.Component {
     this.props?.results[0]?.lat && axios.get(`http://localhost:3003/movieAPI?cityName=${cityName}`).then(response => {
       // update results and make sure errors is set to false
       this.setState({
-        data: response.data.data,
-        timeStamp: response.data.timeStamp
+        data: response.data,
+        error: false
       });
 
     }).catch(error => {
@@ -44,11 +44,8 @@ class Movies extends React.Component {
   }
 
   render() {
-    // display this somewhere.
-    console.log(this.convertDate(this.state.timeStamp));
-
     // table modifications for movies
-    const formattedData = this.state.data.map(obj => {
+    const formattedData = this.state.data.data?.map(obj => {
       obj = { ...obj, cover: <>{ !obj.cover.includes('null') ? <img src={ obj.cover } alt={ obj.title } /> : <TbMovieOff /> }</>, vote: <div className={ `vote ${parseInt(obj.vote) > 60 ? 'good' : parseInt(obj.vote) > 40 ? 'okay' : 'bad'}` }>{ parseInt(obj.vote) > 60 ? <CiFaceSmile /> : parseInt(obj.vote) > 40 ? <CiFaceMeh /> : <CiFaceFrown /> } <div>{ obj.vote }%</div></div> };
 
       return obj;
@@ -56,9 +53,13 @@ class Movies extends React.Component {
 
     // rather than fetch the data every time the component renders, hide it, so it can fetch in the background and is ready to be displayed when active.
     // pass in an array of column #s that need to be deleted from table.  I might use this data later for a modal, so I still need it.
-    return <div id="movies" style={ !this.props.show ? { visibility: 'hidden' } : {} }>
-      <APITable arrayObj={ formattedData } error={ this.state.error } removeColumns={ [0, 3] } cityName={ this.props?.results[0]?.display_name } tableType='movie' validTable={ this.props?.results.length === 1 } />
-    </div>;
+    return (
+      <div id="movies" style={ !this.props.show ? { visibility: 'hidden' } : {} }>
+        <APITable arrayObj={ formattedData } error={ this.state.error } removeColumns={ [0, 3] } cityName={ this.props?.results[0]?.display_name } tableType='movie' validTable={ this.props?.results.length === 1 } />
+        <div id='timeStamp'>
+          UPDATED: { this.convertDate(this.state.data.timeStamp) }
+        </div>
+      </div>);
   }
 }
 

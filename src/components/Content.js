@@ -10,10 +10,12 @@ class Content extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      mapShow: true,
-      weatherShow: false,
-      movieShow: false,
-      foodShow: false
+      nav: {
+        mapShow: true,
+        weatherShow: false,
+        movieShow: false,
+        foodShow: false
+      }
     }
   }
 
@@ -23,7 +25,7 @@ class Content extends React.Component {
     if (event.currentTarget.className !== 'active') {
 
       // create state copy
-      const stateToUpdate = { ...this.state }
+      const stateToUpdate = { ...this.state.nav }
 
       // set all values to false
       for (const property in stateToUpdate) {
@@ -35,7 +37,7 @@ class Content extends React.Component {
       stateToUpdate[event.currentTarget.dataset.name] = event.currentTarget.dataset.value === 'false';
 
       // update state
-      this.setState(stateToUpdate)
+      this.setState({ nav: stateToUpdate });
     }
   }
 
@@ -49,16 +51,15 @@ class Content extends React.Component {
       {/* #contentContainer needs the ref from #formContainer, so I can dynamically update the height by subtracting the static element height and the dynamic form area height. */ }
       <div id="contentContainer" style={ { height: `calc(100vh - ${(126 + this.props.mapFormElemHeight)}px)` } }>
         {/* Nav needs all state props */ }
-        <Nav { ...this.state } onHandleNavClick={ this.handleNavClick } />
+        <Nav { ...this.state.nav } onHandleNavClick={ this.handleNavClick } />
 
-        <Map show={ this.state.mapShow } results={ this.props.results } callAPIs={ this.props.callAPIs } />
-        <Weather show={ this.state.weatherShow } results={ this.props.results } callAPIs={ this.props.callAPIs } />
-        <Movies show={ this.state.movieShow } results={ this.props.results } callAPIs={ this.props.callAPIs } />
-        <Food show={ this.state.foodShow } results={ this.props.results } callAPIs={ this.props.callAPIs } />
-
+        <Map show={ this.state.nav.mapShow } results={ this.props.results } callAPIs={ this.props.callAPIs } />
+        <Weather show={ this.state.nav.weatherShow } results={ this.props.results } callAPIs={ this.props.callAPIs } onHandleTimeStampUpdate={this.handleTimeStampUpdate}/>
+        <Movies show={ this.state.nav.movieShow } results={ this.props.results } callAPIs={ this.props.callAPIs } />
+        <Food show={ this.state.nav.foodShow } results={ this.props.results } callAPIs={ this.props.callAPIs } />
       </div>
     </>
   }
 }
 
-export default Content
+export default Content;

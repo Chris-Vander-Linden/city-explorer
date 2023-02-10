@@ -22,7 +22,7 @@ table.table {
 #contentContainer table td,
 #contentContainer table th {
   min-width: 70px;
-  vertical-align: middle;
+  vertical-align: top;
   padding: 5px 5px 5px 10px;
   border-radius: initial;
 }

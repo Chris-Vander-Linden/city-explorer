@@ -10,7 +10,8 @@ class Food extends React.Component {
     // add state
     this.state = {
       data: [],
-      error: false
+      error: false,
+      timeStamp: null
     };
   }
 
@@ -20,8 +21,8 @@ class Food extends React.Component {
     this.props?.results[0]?.lat && axios.get(`http://localhost:3003/yelp?lat=${this.props.results[0].lat}&lon=${this.props.results[0].lon}`).then(response => {
       // update results and make sure errors is set to false
       this.setState({
-        data: response.data.data,
-        timeStamp: response.data.timeStamp
+        data: response.data,
+        error: false
       });
 
     }).catch(error => {
@@ -42,10 +43,7 @@ class Food extends React.Component {
   }
 
   render() {
-    // display this somewhere.
-    console.log(this.convertDate(this.state.timeStamp));
-
-    const formattedData = this.state.data.map(obj => {
+    const formattedData = this.state.data.data?.map(obj => {
 
       obj = { name: obj.name, ...obj, image: <><img src={ obj.image } alt={ obj.name } /> </>, hours: <div className={ `hours ${obj.hours}` }>{ obj.hours }</div>, url: <div className='yelpLinkContainer'><a href={ obj.url } target='_blank' rel='noreferrer'>Yelp Review</a></div> };
 
@@ -55,6 +53,9 @@ class Food extends React.Component {
     return (
       <div id="food" style={ !this.props.show ? { visibility: 'hidden' } : {} }>
         <APITable arrayObj={ formattedData } error={ this.state.error } removeColumns={ [] } keyProp={ 'distance' } cityName={ this.props?.results[0]?.display_name } tableType='food' validTable={ this.props?.results.length === 1 } />
+        <div id='timeStamp'>
+          UPDATED: { this.convertDate(this.state.data.timeStamp) }
+        </div>
       </div>);
   }
 }
