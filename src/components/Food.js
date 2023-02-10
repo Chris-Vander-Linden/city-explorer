@@ -54,7 +54,7 @@ class Food extends React.Component {
       <div id="food" style={ !this.props.show ? { visibility: 'hidden' } : {} }>
         <APITable arrayObj={ formattedData } error={ this.state.error } removeColumns={ [] } keyProp={ 'distance' } cityName={ this.props?.results[0]?.display_name } tableType='food' validTable={ this.props?.results.length === 1 } />
         <div id='timeStamp'>
-          UPDATED: { this.convertDate(this.state.data.timeStamp) }
+          UPDATED: { this.state.data.timeStamp ? this.convertDate(this.state.data.timeStamp) : '-' }
         </div>
       </div>);
   }

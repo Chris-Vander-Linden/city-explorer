@@ -52,7 +52,7 @@ class Weather extends React.Component {
       <div id="weather" style={ !this.props.show ? { visibility: 'hidden' } : {} }>
         <APITable arrayObj={ formattedData } error={ this.state.error } cityName={ this.props?.results[0]?.display_name } tableType='weather' validTable={ this.props?.results.length === 1 } />
         <div id='timeStamp'>
-          UPDATED: { this.convertDate(this.state.data.timeStamp) }
+          UPDATED: { this.state.data.timeStamp ? this.convertDate(this.state.data.timeStamp) : '-' }
         </div>
       </div>
     );
