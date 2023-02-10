@@ -71,10 +71,34 @@ Actual time needed to complete: 5 hours
 
 Name of feature: Add Food API
 
-Estimate of time needed to complete: 5
+Estimate of time needed to complete: 2 hours
 
-Start time:
+Start time: 2/4/23: 10:00 AM
 
-Finish time:
+Finish time: 2/4/23: 5:00 PM
 
-Actual time needed to complete:
+Actual time needed to complete: 1 hour
+
+---
+
+Name of feature: Modularize Components
+
+Estimate of time needed to complete: 15 minutes
+
+Start time: 2/6/23: 4:00 PM
+
+Finish time: 2/6/23: 5:00 PM
+
+Actual time needed to complete: 15 minutes
+
+---
+
+Name of feature: Display Cache Date for Components
+
+Estimate of time needed to complete: 1.5 hours
+
+Start time: 2/7/23: 10:00 PM
+
+Finish time: 2/9/23: 7:00 PM
+
+Actual time needed to complete: 4 hours
