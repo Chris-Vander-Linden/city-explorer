@@ -8,9 +8,14 @@ class Weather extends React.Component {
     super(props);
     // add state
     this.state = {
-      data: [],
-      error: false
+      data: {},
+      error: false,
     };
+  }
+
+  convertDate(dateObj) {
+    const date = new Date(dateObj)
+    return date.toLocaleTimeString('en-US') + ', ' + date.toLocaleString("default", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
   }
 
   updateData() {
@@ -19,9 +24,9 @@ class Weather extends React.Component {
     this.props?.results[0]?.lat && axios.get(`https://city-explorer-api-jqdk.onrender.com/weatherAPI?lat=${this.props.results[0].lat}&lon=${this.props.results[0].lon}`).then(response => {
       // update results and make sure errors is set to false
       this.setState({
-        data: response.data
+        data: response.data,
+        error: false
       });
-
     }).catch(error => {
       // update error message in state and log
       this.setState({ error: error.message });
@@ -35,7 +40,7 @@ class Weather extends React.Component {
   }
 
   render() {
-    const formattedData = this.state.data.map(obj => {
+    const formattedData = this.state.data.data?.map(obj => {
       // I could have sent the entire url from the server but wanted to simulate having incomplete data.
       obj = { ...obj, icon: <><img src={ `https://www.weatherbit.io/static/img/icons/${obj.icon}.png` } alt='weather' /></> };
 
@@ -43,9 +48,14 @@ class Weather extends React.Component {
     });
 
     // rather than fetch the data every time the component renders, hide it, so it can fetch in the background and is ready to be displayed when active.
-    return <div id="weather" style={ !this.props.show ? { visibility: 'hidden' } : {} }>
-      <APITable arrayObj={ formattedData } error={ this.state.error } cityName={ this.props?.results[0]?.display_name } tableType='weather' validTable={ this.props?.results.length === 1 } />
-    </div>;
+    return (
+      <div id="weather" style={ !this.props.show ? { visibility: 'hidden' } : {} }>
+        <APITable arrayObj={ formattedData } error={ this.state.error } cityName={ this.props?.results[0]?.display_name } tableType='weather' validTable={ this.props?.results.length === 1 } />
+        <div id='timeStamp'>
+          UPDATED: { this.state.data.timeStamp ? this.convertDate(this.state.data.timeStamp) : '-' }
+        </div>
+      </div>
+    );
   }
 }
 
