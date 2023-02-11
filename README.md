@@ -31,6 +31,10 @@ React documentation
 Bootstrap React documentation
 MDN documentation
 
+## MVC
+
+![MVC](https://user-images.githubusercontent.com/11709610/218236225-522d5beb-d22d-42f2-81bb-08a552119265.jpeg)
+
 ## Work Tickets
 
 Name of feature: Add New Components, Navigation, Error Handling
