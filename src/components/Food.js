@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import APITable from './APITable.js';
-import './Food.css'
+import './Food.css';
+import { config } from '../Constants.js'
 
 class Food extends React.Component {
 
@@ -16,9 +17,7 @@ class Food extends React.Component {
   }
 
   updateData() {
-    //http://localhost:3003/yelp
-    //https://city-explorer-api-jqdk.onrender.com/yelp
-    this.props?.results[0]?.lat && axios.get(`https://city-explorer-api-jqdk.onrender.com/yelp?lat=${this.props.results[0].lat}&lon=${this.props.results[0].lon}`).then(response => {
+    this.props?.results[0]?.lat && axios.get(`${config.url.API_URL}/yelp?lat=${this.props.results[0].lat}&lon=${this.props.results[0].lon}`).then(response => {
       // update results and make sure errors is set to false
       this.setState({
         data: response.data,

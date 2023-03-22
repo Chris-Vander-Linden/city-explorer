@@ -13,8 +13,6 @@ class Map extends React.Component {
     };
   }
 
-
-
   updateMap = (lon = 0, lat = 0) => {
 
     this.setState({ loading: true });
@@ -24,7 +22,7 @@ class Map extends React.Component {
 
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL',
+      style: `https://api.maptiler.com/maps/streets/style.json?key=${process.env.REACT_APP_MAP_TILER_KEY}`,
       center: [lon, lat],
       zoom
     })

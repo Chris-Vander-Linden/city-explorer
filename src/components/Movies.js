@@ -3,7 +3,8 @@ import axios from 'axios';
 import APITable from './APITable.js';
 import { TbMovieOff } from 'react-icons/tb';
 import { CiFaceFrown, CiFaceMeh, CiFaceSmile } from 'react-icons/ci'
-import './Movies.css'
+import './Movies.css';
+import { config } from '../Constants.js'
 
 class Movies extends React.Component {
   constructor (props) {
@@ -17,9 +18,7 @@ class Movies extends React.Component {
 
   updateData() {
     const cityName = this.props?.results[0]?.display_name?.match(/^[\w\s-]+\b/)[0];
-    //http://localhost:3003/movieAPI
-    //https://city-explorer-api-jqdk.onrender.com/movieAPI
-    this.props?.results[0]?.lat && axios.get(`https://city-explorer-api-jqdk.onrender.com/movieAPI?cityName=${cityName}`).then(response => {
+    this.props?.results[0]?.lat && axios.get(`${config.url.API_URL}/movieAPI?cityName=${cityName}`).then(response => {
       // update results and make sure errors is set to false
       this.setState({
         data: response.data,
