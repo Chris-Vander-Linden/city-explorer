@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import APITable from './APITable.js';
-import './Weather.css'
+import './Weather.css';
+import { config } from '../Constants.js'
 
 class Weather extends React.Component {
   constructor (props) {
@@ -19,9 +20,7 @@ class Weather extends React.Component {
   }
 
   updateData() {
-    //http://localhost:3003/weatherAPI
-    //https://city-explorer-api-jqdk.onrender.com/weatherAPI
-    this.props?.results[0]?.lat && axios.get(`https://city-explorer-api-jqdk.onrender.com/weatherAPI?lat=${this.props.results[0].lat}&lon=${this.props.results[0].lon}`).then(response => {
+    this.props?.results[0]?.lat && axios.get(`${config.url.API_URL}/weatherAPI?lat=${this.props.results[0].lat}&lon=${this.props.results[0].lon}`).then(response => {
       // update results and make sure errors is set to false
       this.setState({
         data: response.data,
